@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize - Night Mode AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        
+        /* Background Grid Pattern */
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(203, 213, 225, 0.3) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(203, 213, 225, 0.3) 1px, transparent 1px);
+        }
+
+        /* Frosted Glass - Premium Quality */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 20px 40px -10px rgba(59, 130, 246, 0.15),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Notification Pop Animation */
+        .notification-glow {
+            box-shadow: 0 0 40px rgba(6, 182, 212, 0.25);
+            border: 1px solid rgba(165, 243, 252, 0.5);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .anim-float { animation: float 4s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-slate-200 min-h-screen flex items-center justify-center">
+
+    <div id="capture-area" class="relative bg-slate-50 w-[1080px] h-[1080px] flex flex-col items-center overflow-hidden shadow-2xl">
+        
+        <div class="absolute inset-0 bg-grid opacity-50"></div>
+        <div class="absolute top-[-20%] left-[-20%] w-[900px] h-[900px] bg-blue-100/60 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[800px] h-[800px] bg-cyan-100/60 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="relative z-10 w-full h-full flex flex-col justify-between p-16">
+            
+            <div class="flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center text-white font-bold text-xl">D</div>
+                    <span class="text-2xl font-bold text-slate-800 tracking-tight">Digtize</span>
+                </div>
+                <div class="bg-white/60 backdrop-blur-sm px-4 py-2 rounded-full border border-slate-200 text-slate-500 font-medium text-sm flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-red-500"></div> Live Demo
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-12 mt-8">
+                
+                <div class="flex flex-col items-center opacity-40 grayscale transition-all duration-500 hover:grayscale-0 hover:opacity-100">
+                    <div class="flex items-center gap-3 mb-2">
+                        <i data-lucide="moon" class="w-6 h-6 text-slate-600"></i>
+                        <span class="text-4xl font-mono font-bold text-slate-600 tracking-widest">02:45 AM</span>
+                    </div>
+                    <h2 class="text-5xl font-bold text-slate-400 line-through decoration-slate-300 decoration-4">Receptionists Sleep.</h2>
+                </div>
+
+                <div class="anim-float w-full max-w-2xl relative">
+                    <div class="absolute inset-0 bg-cyan-400 rounded-3xl blur-3xl opacity-20"></div>
+                    
+                    <div class="relative notification-glow rounded-3xl p-8 flex items-center gap-6 transform scale-110">
+                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shadow-lg text-white">
+                            <i data-lucide="bot" class="w-10 h-10"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start mb-1">
+                                <h3 class="text-2xl font-bold text-slate-800">New Appointment</h3>
+                                <span class="text-xs font-bold bg-green-100 text-green-700 px-2 py-1 rounded uppercase tracking-wide">Confirmed</span>
+                            </div>
+                            <p class="text-lg text-slate-600 leading-snug">
+                                <span class="font-semibold text-blue-600">@DrSharmaBot</span> booked a patient slot for tomorrow at 10:00 AM.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -top-12 left-1/2 w-px h-12 bg-gradient-to-b from-transparent to-cyan-300"></div>
+                </div>
+
+                <h1 class="text-[110px] font-black leading-none tracking-tighter text-gradient mt-6 drop-shadow-sm text-center">
+                    AI DOESN'T.
+                </h1>
+
+            </div>
+
+            <div class="mt-auto pt-10 border-t border-slate-200/60 flex justify-between items-end">
+                <div>
+                    <p class="text-slate-400 font-bold uppercase tracking-widest text-sm mb-2">Upgrade Your Clinic</p>
+                    <div class="flex items-center gap-2">
+                        <p class="text-4xl font-bold text-slate-800 font-mono">health.digt

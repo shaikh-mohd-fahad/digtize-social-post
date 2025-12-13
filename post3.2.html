@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize Premium Zero Post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Premium Dots Background */
+        .bg-dots {
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+        }
+
+        /* Central Glow Animation */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 40px 10px rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 80px 20px rgba(6, 182, 212, 0.4); border-color: rgba(6, 182, 212, 0.8); }
+        }
+        .core-glow { animation: pulse-glow 4s ease-in-out infinite; }
+
+        /* Slow rotation for outer rings */
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin-ring { animation: spin-slow 20s linear infinite; }
+    </style>
+</head>
+<body class="bg-gray-200 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-slate-50 w-[1080px] h-[1080px] flex flex-col items-center justify-center overflow-hidden shadow-2xl font-sans">
+        
+        <div class="absolute inset-0 bg-dots opacity-50"></div>
+        <div class="absolute top-[-20%] left-[-20%] w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-[-20%] right-[-20%] w-[800px] h-[800px] bg-cyan-100/50 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col items-center justify-center text-center">
+            
+            <div class="absolute w-[700px] h-[700px] border border-blue-100/50 rounded-full spin-ring pointer-events-none"></div>
+            <div class="absolute w-[600px] h-[600px] border border-cyan-100/50 rounded-full spin-ring pointer-events-none" style="animation-direction: reverse; animation-duration: 15s;"></div>
+
+            <div class="relative z-20 mb-6">
+                <div class="w-[450px] h-[450px] rounded-full bg-white/60 backdrop-blur-xl border-4 border-blue-200 flex items-center justify-center core-glow shadow-2xl relative">
+                    
+                    <i data-lucide="network" class="absolute w-64 h-64 text-blue-100/50 -z-10"></i>
+
+                    <h1 class="text-[350px] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-cyan-500 filter drop-shadow-lg">
+                        0
+                    </h1>
+                    
+                    <div class="absolute -right-6 -bottom-6 bg-white p-4 rounded-full shadow-lg border-2 border-green-100">
+                        <i data-lucide="check-circle-2" class="w-16 h-16 text-green-500 fill-green-100 animate-bounce" style="animation-duration: 2s;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-7xl font-extrabold text-slate-900 tracking-tight mb-12 drop-shadow-sm">
+                Missed Calls.
+            </h2>
+
+            <div class="inline-flex items-center gap-4 bg-white/80 backdrop-blur-md border border-blue-100 px-10 py-5 rounded-full shadow-lg">
+                <div class="bg-blue-100 p-2 rounded-full">
+                    <i data-lucide="trending-up" class="w-6 h-6 text-blue-600"></i>
+                </div>
+                <p class="text-3xl text-slate-700 font-bold tracking-wide">
+                    The new standard for Clinics.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="absolute bottom-10 flex items-center gap-2 opacity-70 transition hover:opacity-100">
+             <i data-lucide="zap" class="w-5 h-5 text-blue-600 fill-blue-600"></i>
+             <p class="text-slate-500 font-bold tracking-widest text-sm uppercase">Powered by Digtize AI</p>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
