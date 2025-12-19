@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize Free Website Offer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Brand Pattern */
+        .bg-micro-dots {
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+        }
+
+        /* Float Animation */
+        @keyframes float-card {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .animate-float { animation: float-card 6s ease-in-out infinite; }
+
+        /* Shimmer Effect */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .text-shimmer {
+            background: linear-gradient(to right, #2563eb 20%, #06b6d4 40%, #2563eb 60%, #06b6d4 80%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 4s linear infinite;
+        }
+
+        /* Glass Card Premium */
+        .glass-premium {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-gray-200 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-slate-50 w-[1080px] h-[1080px] flex flex-col overflow-hidden shadow-2xl items-center justify-center">
+        
+        <div class="absolute inset-0 bg-micro-dots opacity-60"></div>
+        <div class="absolute top-[-10%] left-[-10%] w-[900px] h-[900px] bg-blue-100/60 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[900px] h-[900px] bg-cyan-100/60 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <!-- <div class="absolute top-16 bg-slate-900 text-white px-8 py-3 rounded-full text-lg font-bold tracking-widest uppercase shadow-lg z-20">
+            Lucknow Exclusive
+        </div> -->
+
+        <div class="relative z-10 flex flex-col items-center text-center">
+            
+            <h2 class="text-6xl font-bold text-slate-800 mb-8 tracking-tight">
+                We are investing in <br>
+                <span class="text-blue-600">10 Doctors.</span>
+            </h2>
+
+            <div class="glass-premium w-[700px] rounded-[50px] p-12 animate-float relative overflow-hidden">
+                
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-blue-400/20 to-cyan-300/20 rounded-full blur-3xl"></div>
+
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center gap-3 mb-6 bg-blue-50 px-6 py-2 rounded-full border border-blue-100">
+                        <i data-lucide="gift" class="w-6 h-6 text-blue-600"></i>
+                        <span class="text-slate-600 font-semibold tracking-wide uppercase text-sm">Founder's Grant Offer</span>
+                    </div>
+
+                    <div class="relative">
+                        <h1 class="text-[180px] font-black leading-none text-shimmer tracking-tighter">
+                            ₹0
+                        </h1>
+                        <span class="absolute top-8 -right-20 text-3xl font-bold text-red-400 line-through">₹25k</span>
+                    </div>
+
+                    <p class="text-4xl text-slate-700 font-bold mt-2">
+                        Premium Medical Website
+                    </p>
+                    <p class="text-xl text-slate-500 mt-4 font-medium px-8">
+                        High-Authority. 24/7 Live. <br> Trust Optimised.
+                    </p>
+
+                    <div class="mt-10 w-full bg-slate-100 rounded-full h-4 overflow-hidden relative">
+                        <div class="absolute left-0 top-0 h-full w-[10%] bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full"></div>
+                    </div>
+                    <div class="flex justify-between w-full mt-3 px-2">
+                        <span class="text-slate-900 font-bold">10 Slots Open</span>
+                        <span class="text-slate-400 font-bold text-sm uppercase">Priority Access</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center space-y-3">
+                <p class="text-2xl text-slate-500 font-medium">
+                    Design. Hosting. Maintenance. <span class="text-slate-900 font-bold">All 100% Free.</span>
+                </p>
+                <div class="flex items-center justify-center gap-2 text-blue-600 opacity-80">
+                    <span class="text-lg font-bold tracking-widest uppercase">No Hidden Charges</span>
+                    <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
