@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digtize - Missed Call to Booking</title>
+    <title>Digtize - Dark Phone Light BG</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -11,22 +11,22 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* 1. Brand Background */
+        /* 1. The Brand Background (Light + Dots) */
         .bg-dots {
             background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
             background-size: 40px 40px;
         }
 
-        /* 2. Dark Phone Frame */
+        /* 2. Dark Phone Frame (Preserved from your favorite UI) */
         .phone-frame-dark {
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
             box-shadow: 
-                0 0 0 4px #334155,
-                0 0 0 8px #0f172a,
-                0 30px 60px -15px rgba(0,0,0,0.6);
+                0 0 0 4px #334155, /* Subtle Rim */
+                0 0 0 8px #0f172a, /* Bezel */
+                0 30px 60px -15px rgba(0,0,0,0.6); /* Deep Drop Shadow */
         }
 
-        /* 3. Glass Notification */
+        /* 3. Notification Glass (Optimized for Dark Screen) */
         .ios-glass {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(20px);
@@ -47,8 +47,8 @@
         }
         
         .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.8s; } /* Thoda gap badhaya taki story clear ho */
-        .delay-3 { animation-delay: 1.4s; }
+        .delay-2 { animation-delay: 0.6s; }
+        .delay-3 { animation-delay: 1.0s; }
 
         /* Headline Gradient */
         .text-gradient {
@@ -76,7 +76,7 @@
                 <h1 class="text-7xl font-black text-slate-900 tracking-tight leading-[1.1]">
                     Turn Missed Calls <br>
                     <span class="text-gradient">
-                        into Bookings.
+                        into Notifications.
                     </span>
                 </h1>
             </div>
@@ -92,24 +92,24 @@
 
                 <div class="absolute bottom-0 w-full px-5 pb-10 flex flex-col gap-3 z-10">
                     
-                    <div class="notify-item delay-1 ios-glass p-4 rounded-2xl flex gap-4 items-start border-l-4 border-l-red-500">
-                        <div class="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center shrink-0 shadow-lg shadow-red-500/30">
-                            <i data-lucide="phone-missed" class="w-6 h-6 text-white fill-white"></i>
+                    <div class="notify-item delay-1 ios-glass p-4 rounded-2xl flex gap-4 items-start">
+                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 shadow-lg">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-white fill-white"></i>
                         </div>
                         <div class="flex-1">
                             <div class="flex justify-between items-center mb-1">
-                                <span class="text-white font-bold text-sm">Missed Call</span>
-                                <span class="text-slate-400 text-xs">5m ago</span>
+                                <span class="text-white font-bold text-sm">New Patient Inquiry</span>
+                                <span class="text-slate-400 text-xs">2m ago</span>
                             </div>
                             <p class="text-slate-200 text-sm leading-snug">
-                                Call from <span class="font-bold text-white">+91 98765 43***</span>
+                                "Hi Doctor, I have severe back pain. Are you available today?"
                             </p>
                         </div>
                     </div>
 
                     <div class="notify-item delay-2 ios-glass p-4 rounded-2xl flex gap-4 items-start">
-                        <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shrink-0 shadow-lg">
-                            <i data-lucide="calendar-check-2" class="w-6 h-6 text-white"></i>
+                        <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center shrink-0 shadow-lg">
+                            <i data-lucide="calendar-check" class="w-6 h-6 text-white"></i>
                         </div>
                         <div class="flex-1">
                             <div class="flex justify-between items-center mb-1">
@@ -117,7 +117,7 @@
                                 <span class="text-slate-400 text-xs">Now</span>
                             </div>
                             <p class="text-slate-200 text-sm leading-snug">
-                                <span class="font-bold text-white">Rahul Verma</span> booked a slot for <span class="text-blue-300 font-bold uppercase">Today, 7:00 PM</span>.
+                                <span class="font-bold text-white">Rahul Verma</span> booked a slot for Tomorrow, 5:00 PM.
                             </p>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
             </div>
 
             <div class="text-center opacity-80">
-                <p class="text-slate-500 font-bold tracking-[0.3em] uppercase text-sm mb-1">Upgrade Your Clinic</p>
+                <p class="text-slate-400 font-bold tracking-[0.3em] uppercase text-sm mb-1">Upgrade Your Clinic</p>
                 <div class="inline-flex items-center gap-2">
                     <p class="text-slate-900 font-bold text-2xl font-mono">health.digtize.in</p>
                     <i data-lucide="arrow-right" class="w-6 h-6 text-blue-600"></i>
