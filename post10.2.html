@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digtize - 10 Days Challenge</title>
+    <title>Digtize - 10 Days Challenge (Green Success)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -19,10 +19,10 @@
 
         /* 2. Glass Card for Footer */
         .glass-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.9);
-            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(22, 163, 74, 0.15); /* Greenish Shadow */
         }
 
         /* 3. Text Gradients */
@@ -50,12 +50,14 @@
     <div id="capture-area" class="relative bg-white w-[1080px] h-[1080px] flex flex-col items-center justify-between overflow-hidden shadow-2xl">
         
         <div class="absolute inset-0 bg-dots opacity-60"></div>
-        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-100/50 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-100/40 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-cyan-100/40 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-green-100/40 rounded-full blur-[100px] pointer-events-none"></div>
 
         <div class="relative z-10 pt-20">
-            <div class="bg-slate-900 text-white px-8 py-3 rounded-full flex items-center gap-3 shadow-xl transform hover:scale-105 transition duration-300">
-                <i data-lucide="flag" class="w-6 h-6 text-yellow-400 fill-yellow-400"></i>
+            <div class="bg-green-600 text-white px-8 py-3 rounded-full flex items-center gap-3 shadow-xl shadow-green-200 transform hover:scale-105 transition duration-300 border border-green-500">
+                <i data-lucide="flag" class="w-6 h-6 text-white fill-white"></i>
                 <span class="text-xl font-bold tracking-widest uppercase">The Challenge Begins</span>
             </div>
         </div>
@@ -82,11 +84,11 @@
         </div>
 
         <div class="relative z-10 w-full px-16 pb-16">
-            <div class="glass-card rounded-[32px] p-8 flex items-center justify-between border-l-8 border-l-blue-600">
+            <div class="glass-card rounded-[32px] p-8 flex items-center justify-between border-l-8 border-l-green-500">
                 
                 <div class="flex items-center gap-6">
-                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
-                        <i data-lucide="rocket" class="w-8 h-8 text-blue-600"></i>
+                    <div class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center border border-green-100">
+                        <i data-lucide="rocket" class="w-8 h-8 text-green-600"></i>
                     </div>
                     <div>
                         <p class="text-slate-400 font-bold uppercase tracking-widest text-sm mb-1">Mark the Time</p>
@@ -95,8 +97,9 @@
                 </div>
 
                 <div class="text-right">
-                    <div class="bg-slate-900 text-white px-6 py-2 rounded-lg font-mono text-2xl font-bold tracking-wide">
-                        Tomorrow @ 10 AM
+                    <div class="bg-slate-900 text-white px-8 py-3 rounded-xl font-mono text-2xl font-bold tracking-wide flex items-center gap-3">
+                        Tomorrow @ 8 PM
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
                     </div>
                 </div>
 

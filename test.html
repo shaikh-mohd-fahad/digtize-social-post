@@ -3,184 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digtize - Clinic OS Dashboard</title>
+    <title>Digtize - Apple Minimalist 10</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { font-family: 'Inter', sans-serif; }
         
-        /* 1. Brand Background */
-        .bg-dots {
-            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
-            background-size: 40px 40px;
+        /* 1. Apple-esque Noise Texture */
+        .bg-noise {
+            background-color: #f5f5f7; /* Apple Light Grey */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
         }
 
-        /* 2. Main Dashboard Glass Panel */
-        .dashboard-glass {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 1);
-            box-shadow: 
-                0 0 0 1px rgba(0,0,0,0.03),
-                0 30px 60px -15px rgba(59, 130, 246, 0.15),
-                0 10px 20px -5px rgba(0,0,0,0.05);
-        }
-
-        /* 3. Graph Bars Animation */
-        @keyframes grow-up {
-            from { height: 10%; opacity: 0; }
-            to { opacity: 1; }
-        }
-        .bar {
-            animation: grow-up 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transform-origin: bottom;
-        }
-
-        /* 4. Floating Bubbles Animation */
-        @keyframes float-in {
-            0% { transform: translateY(20px) scale(0.9); opacity: 0; }
-            100% { transform: translateY(0) scale(1); opacity: 1; }
-        }
-        .pop-card {
-            animation: float-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            box-shadow: 0 15px 30px -5px rgba(0,0,0,0.1);
-        }
-
-        /* Gradient Text */
-        .text-gradient {
-            background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+        /* 2. The "Titanium" Number Gradient */
+        .titanium-text {
+            background: linear-gradient(180deg, #1e293b 0%, #475569 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            letter-spacing: -25px; /* Tight tracking like Apple */
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
         }
+
+        /* 3. Soft Ambient Glow */
+        .ambient-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,1) 0%, rgba(245,245,247,0) 60%);
+        }
+
+        /* 4. Fade In Animation */
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade { animation: fade-up 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<body class="bg-gray-200 min-h-screen flex items-center justify-center p-4">
 
-    <div id="capture-area" class="relative bg-white w-[1080px] h-[1080px] flex flex-col items-center justify-center overflow-hidden shadow-2xl">
+    <div id="capture-area" class="relative bg-noise w-[1080px] h-[1080px] flex flex-col items-center justify-between overflow-hidden shadow-2xl">
         
-        <div class="absolute inset-0 bg-dots opacity-60"></div>
-        <div class="absolute top-[-10%] right-[-10%] w-[900px] h-[900px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-[-10%] left-[-10%] w-[900px] h-[900px] bg-cyan-100/50 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-[800px] h-[800px] ambient-glow rounded-full"></div>
+        </div>
 
-        <div class="relative z-10 w-full px-12 flex flex-col items-center">
+        <div></div>
 
-            <div class="text-center mb-12">
-                <div class="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-1.5 rounded-full mb-4 shadow-lg">
-                    <i data-lucide="zap" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                    <span class="text-sm font-bold tracking-widest uppercase">Live Demo</span>
-                </div>
-                <h1 class="text-7xl font-black text-slate-900 tracking-tight leading-none">
-                    Your Clinic on <br>
-                    <span class="text-gradient">Autopilot.</span>
-                </h1>
-            </div>
-
-            <div class="relative w-full max-w-[850px]">
-                
-                <div class="dashboard-glass rounded-[40px] p-2 overflow-hidden relative">
-                    
-                    <div class="bg-slate-50/50 border-b border-slate-200 px-6 py-4 flex justify-between items-center rounded-t-[32px]">
-                        <div class="flex gap-2">
-                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                        </div>
-                        <div class="flex items-center gap-2 opacity-50">
-                            <i data-lucide="lock" class="w-3 h-3"></i>
-                            <span class="text-xs font-bold uppercase tracking-wider">Digtize OS</span>
-                        </div>
-                    </div>
-
-                    <div class="flex">
-                        <div class="w-20 py-8 flex flex-col items-center gap-8 border-r border-slate-100">
-                            <div class="p-3 bg-blue-600 rounded-xl shadow-lg shadow-blue-200">
-                                <i data-lucide="layout-dashboard" class="w-6 h-6 text-white"></i>
-                            </div>
-                            <i data-lucide="calendar" class="w-6 h-6 text-slate-400"></i>
-                            <i data-lucide="users" class="w-6 h-6 text-slate-400"></i>
-                            <i data-lucide="settings" class="w-6 h-6 text-slate-400"></i>
-                        </div>
-
-                        <div class="flex-1 p-8 bg-white/40">
-                            
-                            <div class="flex justify-between items-end mb-8">
-                                <div>
-                                    <p class="text-slate-400 font-bold text-xs uppercase tracking-wider mb-1">Overview</p>
-                                    <h2 class="text-2xl font-bold text-slate-800">Hello, Dr. Sharma 👋</h2>
-                                </div>
-                                <div class="bg-green-100 text-green-700 px-3 py-1 rounded-lg text-xs font-bold flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                    AI Active
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-3 gap-4 mb-8">
-                                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                                    <p class="text-slate-400 text-xs font-bold uppercase mb-2">Appointments</p>
-                                    <p class="text-4xl font-black text-slate-800">12</p>
-                                    <p class="text-green-500 text-xs font-bold mt-1">Today</p>
-                                </div>
-                                <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                                    <p class="text-slate-400 text-xs font-bold uppercase mb-2">Pending Calls</p>
-                                    <p class="text-4xl font-black text-slate-800 opacity-30">0</p>
-                                    <p class="text-blue-500 text-xs font-bold mt-1">Cleared by AI</p>
-                                </div>
-                                <div class="bg-blue-600 p-4 rounded-2xl shadow-lg shadow-blue-200 text-white">
-                                    <p class="text-blue-200 text-xs font-bold uppercase mb-2">Revenue</p>
-                                    <p class="text-4xl font-black">₹8k</p>
-                                    <p class="text-blue-100 text-xs font-bold mt-1">+12% vs yest.</p>
-                                </div>
-                            </div>
-
-                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
-                                <div class="flex justify-between items-center mb-4">
-                                    <p class="text-slate-800 font-bold text-sm">Patient Inquiries</p>
-                                    <i data-lucide="trending-up" class="w-4 h-4 text-green-500"></i>
-                                </div>
-                                <div class="h-24 flex items-end gap-3">
-                                    <div class="bar w-full bg-slate-100 rounded-t-md" style="height: 40%"></div>
-                                    <div class="bar w-full bg-slate-100 rounded-t-md" style="height: 60%; animation-delay: 0.1s"></div>
-                                    <div class="bar w-full bg-slate-100 rounded-t-md" style="height: 30%; animation-delay: 0.2s"></div>
-                                    <div class="bar w-full bg-blue-100 rounded-t-md" style="height: 70%; animation-delay: 0.3s"></div>
-                                    <div class="bar w-full bg-blue-200 rounded-t-md" style="height: 50%; animation-delay: 0.4s"></div>
-                                    <div class="bar w-full bg-blue-400 rounded-t-md" style="height: 85%; animation-delay: 0.5s"></div>
-                                    <div class="bar w-full bg-gradient-to-t from-blue-600 to-cyan-500 rounded-t-md shadow-lg shadow-blue-200" style="height: 100%; animation-delay: 0.6s"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pop-card absolute -right-12 top-24 bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-green-100 flex items-center gap-3 z-20" style="animation-delay: 1s;">
-                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                        <i data-lucide="message-circle" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase">Auto-Reply</p>
-                        <p class="text-slate-800 font-bold text-sm">Sent slot details to Rahul</p>
-                    </div>
-                </div>
-
-                <div class="pop-card absolute -left-8 bottom-32 bg-slate-900 text-white p-4 rounded-2xl shadow-xl flex items-center gap-3 z-20" style="animation-delay: 1.5s;">
-                    <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                        <i data-lucide="check" class="w-5 h-5"></i>
-                    </div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase">Booking</p>
-                        <p class="text-white font-bold text-sm">Confirmed for 5 PM</p>
-                    </div>
-                </div>
-
+        <div class="relative z-10 text-center flex flex-col items-center">
+            
+            <h1 class="text-[500px] font-semibold leading-none titanium-text animate-fade">
+                10
+            </h1>
+            
+            <div class="mt-12 opacity-0 animate-fade" style="animation-delay: 0.5s;">
+                <p class="text-slate-500 text-3xl tracking-[0.6em] font-medium uppercase pl-4">
+                    Days of Design
+                </p>
             </div>
 
         </div>
 
-        <div class="absolute bottom-10 flex items-center gap-2 opacity-60">
-             <i data-lucide="layout" class="w-5 h-5 text-blue-600"></i>
-             <p class="text-slate-500 font-bold tracking-widest text-sm uppercase">Digtize Healthcare Suite</p>
+        <div class="relative z-10 w-full pb-20 text-center opacity-0 animate-fade" style="animation-delay: 1s;">
+            
+            <div class="w-16 h-px bg-slate-300 mx-auto mb-8"></div>
+
+            <div class="flex flex-col items-center gap-3">
+                <p class="text-slate-400 font-medium tracking-wide text-lg">
+                    A Digtize Original Series.
+                </p>
+                
+                <div class="flex items-center gap-2 bg-white px-5 py-2 rounded-full shadow-sm border border-slate-100">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                    </span>
+                    <span class="text-slate-800 font-semibold text-sm uppercase tracking-wider">Starts Tomorrow</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="absolute top-16 right-16 opacity-30">
+            <div class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white font-bold text-xl">D</div>
         </div>
 
     </div>
