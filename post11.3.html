@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize - 2026 Lock Screen (Light)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* 1. Digtize Signature Background */
+        .bg-dots {
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+        }
+
+        /* 2. Glass Notifications (Apple Style) */
+        .glass-notification {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 1);
+            box-shadow: 
+                0 4px 6px -1px rgba(0, 0, 0, 0.02),
+                0 10px 15px -3px rgba(59, 130, 246, 0.1); /* Subtle Blue Shadow */
+            transition: transform 0.3s ease;
+        }
+
+        /* 3. Text Gradients */
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 4. Animations */
+        @keyframes slide-up {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .anim-delay-1 { animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; animation-delay: 0.2s; }
+        .anim-delay-2 { animation: slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; animation-delay: 1.0s; }
+
+        /* Shimmer Effect for the "Hero" Notification */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer-border {
+            position: relative;
+            overflow: hidden;
+        }
+        .shimmer-border::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-white w-[1080px] h-[1080px] flex flex-col items-center justify-between overflow-hidden shadow-2xl">
+        
+        <div class="absolute inset-0 bg-dots opacity-60"></div>
+        <div class="absolute top-[-15%] right-[-15%] w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-[-15%] left-[-15%] w-[800px] h-[800px] bg-cyan-100/50 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="relative z-10 w-full h-full flex flex-col items-center pt-32">
+            
+            <div class="mb-8 animate-pulse">
+                <i data-lucide="lock" class="w-8 h-8 text-slate-400"></i>
+            </div>
+
+            <div class="text-center space-y-2 mb-20">
+                <h1 class="text-[160px] font-bold leading-none text-slate-900 tracking-tighter drop-shadow-sm">
+                    12:00
+                </h1>
+                <p class="text-3xl font-medium text-slate-500 tracking-wide">Thursday, 1 January</p>
+            </div>
+
+            <div class="w-[600px] flex flex-col gap-5">
+
+                <div class="glass-notification anim-delay-1 rounded-3xl p-5 flex items-start gap-4 opacity-80 scale-95 origin-bottom">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center shrink-0 border border-slate-200">
+                        <i data-lucide="party-popper" class="text-slate-500 w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center w-full min-w-[380px]">
+                            <h3 class="font-bold text-slate-700">Calendar</h3>
+                            <span class="text-xs text-slate-400 font-bold">NOW</span>
+                        </div>
+                        <p class="text-slate-500 mt-1 text-lg">Happy New Year 2026! 🎆</p>
+                    </div>
+                </div>
+
+                <div class="glass-notification shimmer-border anim-delay-2 rounded-3xl p-6 flex items-start gap-5 bg-white/90 transform scale-105 shadow-2xl">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shrink-0 shadow-lg shadow-blue-200">
+                        <i data-lucide="bot" class="text-white w-8 h-8"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center w-full">
+                            <h3 class="font-bold text-slate-900 text-xl">Digtize Agent</h3>
+                            <span class="text-xs text-blue-600 font-bold bg-blue-50 px-2 py-1 rounded">JUST NOW</span>
+                        </div>
+                        <p class="text-slate-700 font-medium text-lg leading-snug mt-2">
+                            Celebrations on? No worries. <br>
+                            I just confirmed <span class="text-gradient-blue font-black">3 Patient Appointments</span> for tomorrow morning.
+                        </p>
+                        
+                        <div class="mt-4 flex gap-3 opacity-90">
+                            <div class="flex -space-x-2">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-500">R</div>
+                                <div class="w-8 h-8 rounded-full bg-slate-300 border-2 border-white flex items-center justify-center text-[10px] font-bold text-slate-600">P</div>
+                                <div class="w-8 h-8 rounded-full bg-green-100 border-2 border-white flex items-center justify-center text-[10px] font-bold text-green-600">+1</div>
+                            </div>
+                            <p class="text-sm text-slate-400 self-center font-medium">Schedule Updated</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="absolute bottom-12 w-full flex flex-col items-center gap-3 animate-bounce">
+            <p class="text-slate-400 font-bold tracking-widest text-sm uppercase">Swipe up to Upgrade</p>
+            <p class="text-slate-600 font-bold tracking-wide text-lg">health.digtize.in</p>
+            <!-- <div class="w-16 h-1.5 bg-slate-300 rounded-full"></div> -->
+        </div>
+        
+        <!-- <div class="absolute bottom-12 right-12 opacity-40">
+            <p class="text-white font-bold tracking-wide text-lg">health.digtize.in</p>
+        </div> -->
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

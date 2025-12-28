@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX Launch Post - Gold Standard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;500;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        // New Palette: Deep Blue & Gold
+                        trade: {
+                            bg: '#020410', // Deepest Midnight Blue
+                            card: '#0A1128',
+                            accent: '#FFB800', // Rich Gold
+                            accent2: '#FF5C00', // Deep Orange for gradients
+                            text: '#E2E8F0', // Off-white for better readability against blue
+                        }
+                    },
+                     backgroundImage: {
+                        'gold-gradient': 'linear-gradient(to right, #FFB800, #FF5C00)',
+                        'blue-gradient': 'linear-gradient(to bottom right, #0A1128, #020410)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen p-10">
+
+    <div class="relative w-[1080px] h-[1080px] bg-trade-bg overflow-hidden flex flex-col items-center justify-center text-trade-text shadow-2xl border border-blue-900/30">
+
+        <div class="absolute inset-0 opacity-10" 
+             style="background-image: linear-gradient(#1e3a8a 1px, transparent 1px), linear-gradient(90deg, #1e3a8a 1px, transparent 1px); background-size: 60px 60px;">
+        </div>
+
+        <div class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-blue-600/20 opacity-30 blur-[150px] rounded-full mix-blend-screen"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[800px] h-[800px] bg-trade-accent2/10 opacity-30 blur-[180px] rounded-full mix-blend-screen"></div>
+
+
+        <div class="relative z-10 w-[850px] bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-2xl border border-white/10 rounded-[50px] p-16 flex flex-col items-center text-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            
+            <div class="mb-8 p-1 rounded-2xl bg-gold-gradient shadow-lg relative group">
+                <div class="bg-trade-bg p-4 rounded-xl relative overflow-hidden">
+                    <div class="absolute inset-0 bg-trade-accent blur-2xl opacity-10 group-hover:opacity-30 transition duration-500"></div>
+                    <svg width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="url(#gold-grad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="gold-grad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#FFB800"/>
+                                <stop offset="100%" stop-color="#FF5C00"/>
+                            </linearGradient>
+                        </defs>
+                        <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                        <polyline points="16 7 22 7 22 13"></polyline>
+                    </svg>
+                </div>
+            </div>
+
+            <h3 class="font-mono text-trade-accent text-lg tracking-[0.3em] uppercase mb-4 font-bold">Project Initialized</h3>
+            
+            <h1 class="font-sans font-black text-9xl tracking-tighter mb-2 leading-none text-transparent bg-clip-text bg-gradient-to-r from-trade-accent via-yellow-200 to-trade-accent2 drop-shadow-sm">
+                TradeX
+            </h1>
+            
+            <p class="font-sans text-3xl text-blue-200/80 font-normal mt-4 tracking-wide">
+                Virtual F&O Trading Platform
+            </p>
+
+            <div class="w-full h-px bg-gradient-to-r from-transparent via-trade-accent/50 to-transparent my-12"></div>
+
+            <div class="flex gap-6 justify-center mb-16">
+                <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-blue-950/50 border border-blue-800/50 backdrop-blur-md shadow-lg">
+                    <div class="w-3 h-3 rounded-full bg-trade-accent shadow-[0_0_15px_#FFB800]"></div>
+                    <span class="font-mono text-lg text-blue-100">Nifty 50</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-blue-950/50 border border-blue-800/50 backdrop-blur-md shadow-lg">
+                    <div class="w-3 h-3 rounded-full bg-trade-accent shadow-[0_0_15px_#FFB800]"></div>
+                    <span class="font-mono text-lg text-blue-100">Bank Nifty</span>
+                </div>
+                <div class="flex items-center gap-3 px-6 py-3 rounded-full bg-blue-950/50 border border-blue-800/50 backdrop-blur-md shadow-lg">
+                    <div class="w-3 h-3 rounded-full bg-white shadow-[0_0_15px_#ffffff]"></div>
+                    <span class="font-mono text-lg text-blue-100">Paper Trading</span>
+                </div>
+            </div>
+
+            <div class="w-full text-left bg-blue-950/30 p-6 rounded-3xl border border-blue-900/50">
+                <div class="flex justify-between font-mono text-blue-300/70 mb-2 text-lg">
+                    <span>> dev_status</span>
+                    <span class="text-trade-accent animate-pulse font-bold">Running...</span>
+                </div>
+                <div class="w-full h-4 bg-blue-950 rounded-full overflow-hidden relative border border-blue-900">
+                    <div class="absolute top-0 left-0 h-full w-[15%] bg-gold-gradient shadow-[0_0_25px_#FFB800]"></div>
+                </div>
+                <div class="mt-3 font-mono text-sm text-blue-400/60 flex items-center gap-2">
+                    <svg class="w-4 h-4 text-trade-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Module: Core Architecture Setup
+                </div>
+            </div>
+
+        </div>
+
+        <div class="absolute bottom-16 text-center z-10">
+            <p class="font-sans font-bold text-2xl text-blue-500/50 tracking-[0.3em]">#BUILDINGINPUBLIC</p>
+        </div>
+
+        <svg class="absolute top-12 left-12 w-20 h-20 text-blue-800/50" viewBox="0 0 100 100">
+            <path d="M10 10 L40 10 M10 10 L10 40" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+        <svg class="absolute bottom-12 right-12 w-20 h-20 text-blue-800/50 rotate-180" viewBox="0 0 100 100">
+            <path d="M10 10 L40 10 M10 10 L10 40" stroke="currentColor" stroke-width="2" fill="none"/>
+        </svg>
+
+    </div>
+
+</body>
+</html>

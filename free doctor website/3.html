@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Care General Clinic - Dr. Ankit Sharma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            DEFAULT: '#059669', // Emerald Green
+                            dark: '#047857',    // Deep Green
+                            light: '#ECFDF5'    // Mint/Light Green
+                        },
+                        accent: '#F59E0B',      // Warm Amber for "Care" feel
+                        secondary: '#0F172A'    // Dark Slate
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(5, 150, 105, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient { background: linear-gradient(135deg, #ECFDF5 0%, #ffffff 100%); }
+        .text-gradient { background: linear-gradient(to right, #047857, #059669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .blob { position: absolute; filter: blur(80px); z-index: 0; opacity: 0.6; }
+        
+        /* Floating Badge Animation */
+        @keyframes float-badge {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+        .digtize-badge {
+            animation: float-badge 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-sans text-secondary bg-white overflow-x-hidden relative">
+
+    <a href="https://www.digtize.in" target="_blank" class="digtize-badge fixed bottom-4 left-4 z-[60] flex items-center gap-3 bg-gray-900/95 backdrop-blur-md text-white px-4 py-2 rounded-full shadow-2xl border border-gray-700 hover:scale-105 transition-all duration-300 group">
+        <span class="text-[10px] uppercase tracking-widest text-gray-400 font-semibold group-hover:text-white transition-colors">Designed by</span>
+        <img src="https://www.digtize.in/assets/images/general/logo_white.png" alt="Digtize" class="h-4 w-auto opacity-90 group-hover:opacity-100">
+    </a>
+
+    <div class="bg-primary-dark text-white py-2 text-xs md:text-sm font-medium tracking-wide relative z-50">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex space-x-6">
+                <span class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-white/80"></i>Indiranagar, Bangalore</span>
+                <span class="hidden md:flex items-center"><i class="far fa-clock mr-2 text-white/80"></i>Daily: 9:00 AM - 9:00 PM</span>
+            </div>
+            <div>
+                <a href="mailto:clinic@citycare.digtize.in" class="hover:text-white/80 transition flex items-center"><i class="far fa-envelope mr-2"></i>clinic@citycare.digtize.in</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="absolute top-10 left-0 w-full z-50 bg-transparent py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary-dark flex items-center tracking-tight">
+                <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white mr-3 shadow-glow">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="leading-tight">
+                    City Care <span class="text-primary">Clinic</span>
+                    <span class="block text-xs font-normal text-gray-500 tracking-wider">GENERAL PHYSICIAN</span>
+                </div>
+            </a>
+            
+            <nav class="hidden lg:flex items-center space-x-8 font-semibold text-gray-600">
+                <a href="#home" class="hover:text-primary transition">Home</a>
+                <a href="#about" class="hover:text-primary transition">Doctor</a>
+                <a href="#services" class="hover:text-primary transition">Services</a>
+                <a href="#testimonials" class="hover:text-primary transition">Reviews</a>
+                <a href="#contact" class="hover:text-primary transition">Contact</a>
+                <a href="#" class="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary-dark transition shadow-lg hover:shadow-glow flex items-center">
+                    <i class="far fa-calendar-alt mr-2"></i> Book Visit
+                </a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-2xl text-secondary">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div id="mobile-menu" class="fixed inset-0 z-50 bg-white transform translate-x-full transition-transform duration-300 lg:hidden flex flex-col h-screen">
+            <div class="flex justify-end p-6">
+                <button id="close-menu-btn" class="text-3xl text-secondary"><i class="fas fa-times"></i></button>
+            </div>
+            <nav class="flex flex-col items-center justify-center flex-grow space-y-6 text-lg font-medium p-8">
+                <a href="#home" class="mobile-link text-secondary">Home</a>
+                <a href="#about" class="mobile-link text-secondary">Doctor</a>
+                <a href="#services" class="mobile-link text-secondary">Services</a>
+                <a href="#testimonials" class="mobile-link text-secondary">Reviews</a>
+                 <a href="#" class="bg-primary w-full text-center text-white px-6 py-3 rounded-lg shadow-lg">
+                    Book Now
+                </a>
+            </nav>
+            <div class="p-8 bg-gray-50 border-t border-gray-100 text-center">
+                <p class="text-xs text-gray-400 mb-2 uppercase tracking-wider">Digital Partner</p>
+                <a href="https://www.digtize.in" target="_blank" class="inline-block">
+                    <img src="https://www.digtize.in/assets/images/general/logo.png" alt="Digtize" class="h-6 mx-auto filter grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative pt-36 pb-20 lg:pt-52 lg:pb-32 overflow-hidden hero-gradient">
+        <div class="blob bg-green-200 w-96 h-96 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="blob bg-yellow-100 w-[500px] h-[500px] rounded-full bottom-0 right-0 translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2" data-aos="fade-right">
+                    <div class="inline-flex items-center gap-2 bg-white border border-green-100 px-4 py-2 rounded-full shadow-sm mb-6">
+                        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+                        <span class="text-sm font-semibold text-primary-dark tracking-wide">Walk-ins Welcome Today</span>
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6 text-secondary">
+                        Your Family's Health <br>
+                        <span class="text-gradient">Is Our Priority.</span>
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-lg">
+                        Trusted general medical care by <strong>Dr. Ankit Sharma</strong>. From high fever to seasonal flu, we provide quick diagnosis and effective treatment for your entire family.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="tel:98765432" class="flex items-center justify-center bg-primary-dark text-white px-8 py-4 rounded-xl font-bold hover:bg-green-800 transition shadow-lg hover:-translate-y-1">
+                            <i class="fas fa-phone-alt mr-3"></i> 98765 00000
+                        </a>
+                        <a href="#" class="flex items-center justify-center bg-white text-primary border border-gray-200 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition shadow-sm">
+                            <i class="fab fa-whatsapp mr-3 text-2xl text-green-500"></i> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2 relative" data-aos="fade-left">
+                    <div class="relative z-10 bg-white p-2 rounded-3xl shadow-2xl rotate-2 hover:rotate-0 transition duration-500">
+                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Doctor Consultation" class="rounded-2xl w-full object-cover h-[450px]">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-4 animate-bounce" style="animation-duration: 3s;">
+                            <div class="bg-green-50 p-3 rounded-lg text-primary text-xl">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-bold uppercase">Patients Cured</p>
+                                <p class="text-xl font-bold text-secondary">10,000+</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] border border-green-200 rounded-full -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white relative z-20 -mt-10">
+        <div class="container mx-auto px-6">
+            <div class="bg-primary-light rounded-3xl p-8 md:p-12 shadow-sm border border-green-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center md:text-left flex flex-col items-center md:items-start" data-aos="fade-up">
+                        <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-accent text-2xl shadow-md mb-4">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-secondary mb-2">Expert Diagnosis</h3>
+                        <p class="text-gray-600 text-sm">Accurate diagnosis for viral fevers, infections, and chronic conditions.</p>
+                    </div>
+                    <div class="text-center md:text-left flex flex-col items-center md:items-start" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-primary text-2xl shadow-md mb-4">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-secondary mb-2">Family Care</h3>
+                        <p class="text-gray-600 text-sm">We treat patients of all ages, from children to seniors, with personalized care.</p>
+                    </div>
+                    <div class="text-center md:text-left flex flex-col items-center md:items-start" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center text-blue-500 text-2xl shadow-md mb-4">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-secondary mb-2">Instant Lab Support</h3>
+                        <p class="text-gray-600 text-sm">Quick sample collection for blood tests, malaria, dengue, and typhoid.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                <span class="text-primary font-bold tracking-wider text-sm uppercase">Medical Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary mt-2 mb-4">What We Treat</h2>
+                <div class="h-1 w-20 bg-primary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up">
+                    <div class="h-48 overflow-hidden relative">
+                         <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=800&q=80" alt="Fever Treatment" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition">High Fever & Flu</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Immediate treatment for seasonal viral fever, typhoid, malaria, and dengue.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80" alt="Cough Cold" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition">Cough & Cold</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Nebulization and care for severe cough, throat infection, and respiratory issues.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden relative">
+                         <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?auto=format&fit=crop&w=800&q=80" alt="Body Pain" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition">Body Pain & Weakness</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Diagnosis for chronic body ache, joint pain, vitamins deficiency, and fatigue.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Blood Pressure" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition">Diabetes & BP</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Regular monitoring and medication management for Sugar (Diabetes) and BP patients.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="400">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?auto=format&fit=crop&w=800&q=80" alt="Stomach Infection" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition">Stomach Infections</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Treatment for acidity, food poisoning, loose motion, vomiting, and digestion issues.</p>
+                    </div>
+                </div>
+
+                <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-green-900/10 border border-gray-100 transition-all duration-300 transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=800&q=80" alt="General Checkup" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-secondary mb-3 group-hover:text-primary transition">Preventive Checkups</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Full body checkups to detect health issues early and maintain a healthy lifestyle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1612531386530-97286d97c2d2?auto=format&fit=crop&w=1000&q=80" alt="Dr Ankit" class="rounded-2xl shadow-2xl w-full object-cover h-[500px]">
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <span class="text-primary font-bold uppercase tracking-wider text-sm">About Your Doctor</span>
+                    <h2 class="text-4xl font-bold text-secondary mt-2 mb-6">Dr. Ankit Sharma</h2>
+                    <p class="text-xl font-medium text-gray-500 mb-6">MBBS, MD (General Medicine) | 12+ Years Experience</p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Dr. Ankit is a dedicated general physician known for his patient-friendly approach and accurate diagnosis. He believes in minimal medication and maximum care, helping thousands of families in the city recover from seasonal and chronic illnesses.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-secondary"><i class="fas fa-check-circle text-primary mr-3"></i>Specialized in Infectious Diseases</li>
+                        <li class="flex items-center text-secondary"><i class="fas fa-check-circle text-primary mr-3"></i>Expert Diabetes Management</li>
+                        <li class="flex items-center text-secondary"><i class="fas fa-check-circle text-primary mr-3"></i>Available for Emergency Consults</li>
+                    </ul>
+                    <a href="#" class="text-primary font-bold hover:text-primary-dark flex items-center group">
+                        Book Appointment <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-24 bg-green-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary">Patient Stories</h2>
+                <p class="text-gray-500 mt-4">Real recovery stories from our neighborhood.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-soft" data-aos="fade-up">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"I had a very high fever for 3 days. Dr. Ankit diagnosed it as Dengue immediately and his treatment helped me recover in just a week."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Patient" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary text-sm">Rohan Mehta</h4>
+                            <span class="text-xs text-gray-400">Bangalore</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-soft" data-aos="fade-up" data-aos-delay="100">
+                     <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Best family doctor in the area. He listens patiently and doesn't prescribe unnecessary heavy medicines. Highly recommended."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Patient" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary text-sm">Suman Gupta</h4>
+                            <span class="text-xs text-gray-400">Indiranagar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-soft" data-aos="fade-up" data-aos-delay="200">
+                     <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"My chronic cough was not going away for months. Dr. Ankit's diagnosis was perfect. I am finally feeling healthy again."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Patient" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-bold text-secondary text-sm">Vikram Singh</h4>
+                            <span class="text-xs text-gray-400">Koramangala</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-primary-dark relative overflow-hidden">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Feeling Unwell?</h2>
+            <p class="text-green-100 text-lg mb-10 max-w-2xl mx-auto">Don't ignore the symptoms. Consult us today for a quick recovery.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-primary-dark px-10 py-4 rounded-full font-bold shadow-lg hover:bg-gray-100 transition">
+                    <i class="fab fa-whatsapp mr-2"></i> WhatsApp Us
+                </a>
+                <a href="tel:98765432" class="border-2 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-primary-dark transition">
+                    <i class="fas fa-phone mr-2"></i> Call Clinic
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-secondary text-gray-400 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-6 flex items-center">
+                         <i class="fas fa-plus-square text-primary mr-2"></i> City Care Clinic
+                    </h3>
+                    <p class="text-sm leading-relaxed mb-6">
+                        Providing affordable and reliable primary healthcare. Your health is our responsibility.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#home" class="hover:text-primary transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-primary transition">About Doctor</a></li>
+                        <li><a href="#services" class="hover:text-primary transition">Services</a></li>
+                        <li><a href="#testimonials" class="hover:text-primary transition">Testimonials</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact Info</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt text-primary mt-1 mr-3"></i>Indiranagar, Bangalore, India</li>
+                        <li class="flex items-center"><i class="fas fa-phone text-primary mr-3"></i>+91 98765 00000</li>
+                        <li class="flex items-center"><i class="fas fa-envelope text-primary mr-3"></i>clinic@citycare.digtize.in</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Clinic Hours</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex justify-between"><span>Mon - Sat</span> <span class="text-white">09:00 - 21:00</span></li>
+                        <li class="flex justify-between"><span>Sunday</span> <span class="text-primary">10:00 - 14:00</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2025 City Care General Clinic. All Rights Reserved.</p>
+                <div class="flex items-center mt-4 md:mt-0">
+                    <span class="mr-3 text-gray-500 text-xs uppercase tracking-wider">Powered by</span>
+                    <a href="https://www.digtize.in" target="_blank" class="hover:opacity-80 transition block">
+                        <img src="https://www.digtize.in/assets/images/general/logo_white.png" alt="Digtize" class="h-6 w-auto">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 50 });
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() { mobileMenu.classList.toggle('translate-x-full'); }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    </script>
+</body>
+</html>

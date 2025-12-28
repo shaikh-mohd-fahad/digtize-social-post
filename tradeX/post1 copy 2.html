@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TradeX - Apple Light Mode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        apple: {
+                            bg: '#F5F5F7', // Apple's signature off-white
+                            card: '#FFFFFF',
+                            text: '#1D1D1F', // Almost black
+                            gray: '#86868B',
+                            green: '#34C759', // Apple Health/Finance Green
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -10px rgba(0, 0, 0, 0.05)',
+                        'inner-soft': 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-10">
+
+    <div class="relative w-[1080px] h-[1080px] bg-apple-bg overflow-hidden flex flex-col items-center justify-center text-apple-text shadow-2xl">
+
+        <div class="absolute top-[-20%] left-[-20%] w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[120px] mix-blend-multiply"></div>
+        <div class="absolute bottom-[-20%] right-[-20%] w-[800px] h-[800px] bg-green-100/50 rounded-full blur-[120px] mix-blend-multiply"></div>
+
+        <div class="relative z-10 w-[800px] h-[600px] bg-white rounded-[4rem] shadow-soft flex flex-col items-center justify-between p-16 border border-white/60">
+            
+            <div class="w-24 h-24 bg-apple-bg rounded-[2rem] flex items-center justify-center shadow-inner-soft mb-6">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1D1D1F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                </svg>
+            </div>
+
+            <div class="text-center space-y-4">
+                <h3 class="text-apple-gray font-medium tracking-widest uppercase text-lg">Project Initialized</h3>
+                <h1 class="text-9xl font-semibold tracking-tighter text-apple-text">
+                    TradeX
+                </h1>
+                <p class="text-3xl text-apple-gray font-light">
+                    Paper Trading. <span class="text-apple-green font-medium">Reimagined.</span>
+                </p>
+            </div>
+
+            <div class="w-full h-32 relative flex items-end gap-2 mt-8 opacity-80">
+                <div class="w-1/5 h-[40%] bg-apple-bg rounded-t-2xl"></div>
+                <div class="w-1/5 h-[60%] bg-apple-bg rounded-t-2xl"></div>
+                <div class="w-1/5 h-[30%] bg-apple-bg rounded-t-2xl"></div>
+                <div class="w-1/5 h-[80%] bg-apple-green shadow-[0_10px_30px_rgba(52,199,89,0.3)] rounded-t-2xl"></div>
+                <div class="w-1/5 h-[50%] bg-apple-bg rounded-t-2xl"></div>
+            </div>
+
+        </div>
+
+        <div class="absolute bottom-24 flex items-center gap-4 bg-white px-8 py-4 rounded-full shadow-lg border border-gray-100">
+            <span class="relative flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-apple-green opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-apple-green"></span>
+            </span>
+            <span class="font-medium text-lg text-gray-600">Building for Nifty 50</span>
+        </div>
+
+    </div>
+
+</body>
+</html>

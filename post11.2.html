@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize - Midnight Automation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        
+        /* Premium Background */
+        .bg-gradient-mesh {
+            background-color: #0f172a; /* Dark Slate */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(234, 179, 8, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.15) 0px, transparent 50%);
+        }
+
+        /* Gold Gradient Text */
+        .text-gold {
+            background: linear-gradient(135deg, #fcd34d 0%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Glass Notification */
+        .glass-notification {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transform: scale(0.95);
+            opacity: 0;
+            animation: pop-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes pop-in {
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Confetti/Sparkles */
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-gradient-mesh w-[1080px] h-[1080px] flex flex-col items-center justify-center overflow-hidden shadow-2xl">
+        
+        <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-yellow-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="sparkle w-2 h-2 top-20 left-32" style="animation-delay: 0s"></div>
+        <div class="sparkle w-3 h-3 top-40 right-48" style="animation-delay: 0.5s"></div>
+        <div class="sparkle w-1 h-1 bottom-32 left-1/4" style="animation-delay: 1s"></div>
+        <div class="sparkle w-2 h-2 bottom-10 right-20" style="animation-delay: 1.5s"></div>
+
+        <div class="relative z-10 flex flex-col items-center justify-center w-full h-full">
+
+            <div class="text-center mb-16 relative">
+                <p class="text-slate-400 font-medium tracking-[0.5em] uppercase text-sm mb-4">Thursday, Jan 1</p>
+                <h1 class="text-[220px] font-thin leading-none text-white tracking-tighter drop-shadow-2xl">
+                    12<span class="animate-pulse text-slate-600">:</span>00
+                </h1>
+                <div class="flex items-center justify-center gap-4 mt-2">
+                     <div class="h-px w-20 bg-gradient-to-r from-transparent to-slate-500"></div>
+                     <p class="text-gold font-bold text-3xl tracking-widest uppercase">2026 Arrived</p>
+                     <div class="h-px w-20 bg-gradient-to-l from-transparent to-slate-500"></div>
+                </div>
+            </div>
+
+            <div class="w-[500px] flex flex-col gap-4">
+
+                <div class="glass-notification rounded-3xl p-5 flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center shrink-0">
+                        <i data-lucide="party-popper" class="text-yellow-400 w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center w-full min-w-[300px]">
+                            <h3 class="font-bold text-slate-900">Calendar</h3>
+                            <span class="text-xs text-slate-500 font-medium">Now</span>
+                        </div>
+                        <p class="text-slate-600 leading-snug mt-1">Happy New Year! 🎉 Time to celebrate.</p>
+                    </div>
+                </div>
+
+                <div class="glass-notification rounded-3xl p-5 flex items-start gap-4" style="animation-delay: 1.2s;">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center shrink-0 shadow-lg shadow-blue-500/30">
+                        <i data-lucide="bot" class="text-white w-7 h-7"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center w-full">
+                            <h3 class="font-bold text-slate-900">Digtize Agent</h3>
+                            <span class="text-xs text-slate-500 font-medium">Now</span>
+                        </div>
+                        <p class="text-slate-800 font-medium leading-snug mt-1">
+                            While you were partying, I just booked <span class="text-blue-600 font-bold">3 appointments</span> for tomorrow morning.
+                        </p>
+                        <div class="mt-3 flex gap-2">
+                            <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded border border-blue-100">Rahul S. (10:00 AM)</span>
+                            <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded border border-blue-100">Priya M. (10:30 AM)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="absolute bottom-12 flex flex-col items-center gap-2">
+            <div class="flex items-center gap-2 opacity-60">
+                 <i data-lucide="unlock" class="w-4 h-4 text-slate-400"></i>
+                 <p class="text-slate-400 font-medium tracking-widest text-xs uppercase">Unlock 2026 Growth</p>
+            </div>
+            <p class="text-white font-bold tracking-wide text-lg">health.digtize.in</p>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

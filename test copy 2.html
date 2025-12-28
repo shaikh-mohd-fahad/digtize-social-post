@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize - Newton's Cradle</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        
+        /* 1. Clean Background */
+        .bg-clean {
+            background-color: #f8fafc;
+            background-image: 
+                linear-gradient(rgba(226, 232, 240, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(226, 232, 240, 0.4) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* 2. Cradle Structure */
+        .cradle-bar {
+            background: linear-gradient(180deg, #94a3b8 0%, #cbd5e1 100%);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .string {
+            width: 2px;
+            background: rgba(148, 163, 184, 0.5);
+            transform-origin: top center;
+        }
+
+        /* 3. The Balls (Glassy & Metallic) */
+        .ball {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                inset -10px -10px 20px rgba(0,0,0,0.1),
+                inset 10px 10px 20px rgba(255,255,255,0.8),
+                0 15px 25px rgba(0,0,0,0.15); /* Drop Shadow */
+            z-index: 10;
+        }
+
+        /* 4. Physics Animation */
+        /* Left Ball Swing */
+        @keyframes swing-left {
+            0% { transform: rotate(0deg); animation-timing-function: ease-out; }
+            25% { transform: rotate(30deg); animation-timing-function: ease-in; }
+            50% { transform: rotate(0deg); animation-timing-function: linear; }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* Right Ball Swing */
+        @keyframes swing-right {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(0deg); animation-timing-function: ease-out; }
+            75% { transform: rotate(-30deg); animation-timing-function: ease-in; }
+            100% { transform: rotate(0deg); animation-timing-function: linear; }
+        }
+
+        /* Glow Pulse for Center AI Ball */
+        @keyframes ai-pulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.3), inset 0 0 20px rgba(59, 130, 246, 0.2); transform: scale(1); }
+            50% { box-shadow: 0 0 60px rgba(6, 182, 212, 0.6), inset 0 0 40px rgba(6, 182, 212, 0.4); transform: scale(1.02); }
+        }
+
+        /* Applying Animation */
+        .pendulum-left { animation: swing-left 1.5s infinite; }
+        .pendulum-right { animation: swing-right 1.5s infinite; }
+        
+        /* Shadow Movement on Floor */
+        @keyframes shadow-left {
+            0% { transform: translateX(0); opacity: 0.5; }
+            25% { transform: translateX(-40px) scale(0.8); opacity: 0.2; }
+            50% { transform: translateX(0); opacity: 0.5; }
+            100% { transform: translateX(0); opacity: 0.5; }
+        }
+        @keyframes shadow-right {
+            0% { transform: translateX(0); opacity: 0.5; }
+            50% { transform: translateX(0); opacity: 0.5; }
+            75% { transform: translateX(40px) scale(0.8); opacity: 0.2; }
+            100% { transform: translateX(0); opacity: 0.5; }
+        }
+        
+        .shadow-l { animation: shadow-left 1.5s infinite; }
+        .shadow-r { animation: shadow-right 1.5s infinite; }
+
+        /* Ball Styles */
+        .ball-red { background: radial-gradient(circle at 30% 30%, #fecaca 0%, #ef4444 100%); }
+        .ball-blue { background: radial-gradient(circle at 30% 30%, #bfdbfe 0%, #3b82f6 100%); animation: ai-pulse 1.5s infinite; }
+        .ball-green { background: radial-gradient(circle at 30% 30%, #bbf7d0 0%, #22c55e 100%); }
+
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-clean w-[1080px] h-[1080px] flex flex-col items-center justify-between overflow-hidden shadow-2xl">
+        
+        <div class="relative z-10 pt-16 flex flex-col items-center">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-lg">D</div>
+                <span class="text-2xl font-bold text-slate-800 tracking-tight">Digtize</span>
+            </div>
+            <h1 class="text-7xl font-black text-slate-900 tracking-tight text-center leading-tight">
+                The Physics of <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Productivity.</span>
+            </h1>
+        </div>
+
+        <div class="relative w-full flex justify-center items-start h-[500px] pt-10">
+            
+            <div class="absolute top-0 w-[500px] h-4 cradle-bar rounded-full z-20"></div>
+
+            <div class="pendulum-left origin-top h-[350px] flex flex-col items-center relative -mr-[2px]">
+                <div class="string h-full"></div>
+                <div class="ball ball-red">
+                    <i data-lucide="phone-incoming" class="w-10 h-10 text-white"></i>
+                </div>
+                <div class="absolute -bottom-12 bg-white px-3 py-1 rounded-full shadow-sm border border-red-100 text-red-500 font-bold text-sm uppercase tracking-wider">
+                    Call
+                </div>
+            </div>
+
+            <div class="h-[350px] flex flex-col items-center relative z-10 mx-1">
+                <div class="string h-full"></div>
+                <div class="ball ball-blue">
+                    <i data-lucide="zap" class="w-12 h-12 text-white fill-white"></i>
+                </div>
+                <div class="absolute -bottom-16">
+                    <div class="bg-slate-900 text-white px-4 py-1.5 rounded-full shadow-lg flex items-center gap-2">
+                        <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                        <span class="font-bold text-sm">AI Agent</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pendulum-right origin-top h-[350px] flex flex-col items-center relative -ml-[2px]">
+                <div class="string h-full"></div>
+                <div class="ball ball-green">
+                    <i data-lucide="calendar-check" class="w-10 h-10 text-white"></i>
+                </div>
+                <div class="absolute -bottom-12 bg-white px-3 py-1 rounded-full shadow-sm border border-green-100 text-green-600 font-bold text-sm uppercase tracking-wider">
+                    Booking
+                </div>
+            </div>
+
+            <div class="absolute bottom-20 flex gap-1 opacity-20">
+                <div class="w-20 h-4 bg-black rounded-full blur-md shadow-l"></div>
+                <div class="w-20 h-4 bg-black rounded-full blur-md"></div>
+                <div class="w-20 h-4 bg-black rounded-full blur-md shadow-r"></div>
+            </div>
+
+        </div>
+
+        <div class="relative z-10 w-full px-16 pb-16">
+            <div class="bg-white/80 backdrop-blur-xl border border-white p-8 rounded-[2rem] shadow-xl flex items-center justify-between">
+                
+                <div class="flex items-center gap-6">
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center">
+                        <i data-lucide="activity" class="w-8 h-8 text-blue-600"></i>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 font-bold uppercase tracking-widest text-sm mb-1">Instant Reaction</p>
+                        <p class="text-2xl font-bold text-slate-800">Every Call = A Result.</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="text-right hidden md:block">
+                        <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">See it in action</p>
+                        <p class="text-lg font-bold font-mono text-slate-900">health.digtize.in</p>
+                    </div>
+                    <div class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white">
+                        <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

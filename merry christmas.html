@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize - Midnight Recorder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #000; /* Outer dark void */
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* No Scrollbars */
+        }
+        .font-script { font-family: 'Great Vibes', cursive; }
+        
+        /* SCALER WRAPPER */
+        #scaler {
+            transform-origin: center center;
+            transition: transform 0.1s;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        /* 1. Midnight Background */
+        .bg-night {
+            background-color: #020617; /* Rich Black */
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* 2. Snowfall Animation */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8); /* Glowy Snow */
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(1100px); opacity: 0; }
+        }
+
+        /* 3. Luminous Snowman Body */
+        .snow-body {
+            background: radial-gradient(circle at 30% 30%, #ffffff 0%, #94a3b8 100%);
+            box-shadow: 
+                0 0 30px rgba(255, 255, 255, 0.1), /* Ambient Glow */
+                inset -10px -10px 20px rgba(0,0,0,0.5); /* Depth */
+        }
+        
+        /* 4. The Red Elements (High Contrast) */
+        .santa-hat {
+            background: linear-gradient(to right, #dc2626, #991b1b);
+            border-radius: 100% 0 0 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .scarf {
+            background: #ef4444;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        /* 5. Festive Text (Glowing) */
+        .text-christmas {
+            color: #ef4444;
+            /* text-shadow: 0 0 30px rgba(239, 68, 68, 0.4); Glow effect restored for Dark Mode */
+        }
+
+        /* Bounce Animation */
+        @keyframes gentle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow { animation: gentle-bounce 3s ease-in-out infinite; }
+
+        /* RECORD BUTTON STYLE */
+        #record-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.5);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: sans-serif;
+        }
+        #record-btn:hover { background: #1d4ed8; transform: scale(1.05); }
+        #record-btn.recording { background: #dc2626; animation: pulse 1s infinite; }
+        
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+
+    </style>
+</head>
+<body>
+
+    <div id="scaler">
+        
+        <div id="capture-area" class="relative bg-night w-[1080px] h-[1080px] flex flex-col items-center justify-center overflow-hidden shadow-2xl">
+            
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="absolute inset-0 pointer-events-none z-0">
+                <script>
+                    for(let i=0; i<60; i++) {
+                        let snowflake = document.createElement('div');
+                        snowflake.className = 'snowflake';
+                        snowflake.style.left = Math.random() * 100 + '%';
+                        snowflake.style.width = Math.random() * 6 + 3 + 'px';
+                        snowflake.style.height = snowflake.style.width;
+                        snowflake.style.opacity = Math.random() * 0.7 + 0.3;
+                        snowflake.style.animationDuration = Math.random() * 4 + 4 + 's';
+                        snowflake.style.animationDelay = Math.random() * 5 + 's';
+                        document.getElementById('capture-area').appendChild(snowflake);
+                    }
+                </script>
+            </div>
+
+            <div class="relative z-10 flex flex-col items-center">
+
+                <div class="relative animate-bounce-slow mb-16 scale-110">
+                    
+                    <div class="snow-body w-40 h-40 rounded-full relative z-20 flex items-center justify-center">
+                        <div class="absolute top-12 left-10 w-4 h-4 bg-slate-900 rounded-full"></div>
+                        <div class="absolute top-12 right-10 w-4 h-4 bg-slate-900 rounded-full"></div>
+                        <div class="absolute top-16 w-4 h-12 bg-orange-500 rounded-full transform rotate-90 left-1/2 -translate-x-1/2 shadow-lg"></div>
+                        <div class="absolute bottom-8 w-16 h-8 border-b-4 border-slate-900/80 rounded-[50%]"></div>
+                    </div>
+
+                    <div class="absolute -top-16 left-0 w-40 h-24 santa-hat transform -rotate-12 z-30 rounded-t-full">
+                        <div class="absolute -top-4 -right-4 w-12 h-12 bg-slate-100 rounded-full shadow-md"></div>
+                        <div class="absolute bottom-0 w-full h-8 bg-slate-100 rounded-full"></div>
+                    </div>
+
+                    <div class="absolute top-32 left-1/2 -translate-x-1/2 w-48 h-12 scarf rounded-full z-30 transform -rotate-2"></div>
+                    <div class="absolute top-36 left-28 w-12 h-24 scarf rounded-b-lg z-20 transform rotate-12"></div>
+
+                    <div class="snow-body w-56 h-56 rounded-full -mt-10 relative z-10 flex items-center justify-center">
+                        <div class="flex flex-col gap-4 mt-8">
+                            <div class="w-5 h-5 bg-slate-800 rounded-full shadow-inner"></div>
+                            <div class="w-5 h-5 bg-slate-800 rounded-full shadow-inner"></div>
+                        </div>
+                    </div>
+
+                    <div class="absolute top-36 left-1/2 -translate-x-1/2 w-48 h-48 border-[5px] border-slate-400 rounded-full pointer-events-none z-40" style="clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0% 100%);"></div>
+                    <div class="absolute bottom-10 right-4 w-10 h-10 bg-slate-200 border-4 border-slate-400 rounded-full z-40 shadow-xl"></div>
+
+                    <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-40 h-6 bg-black/50 blur-xl rounded-full"></div>
+                </div>
+
+                <div class="text-center space-y-2">
+                    <h2 class="font-script text-6xl text-slate-300 transform -rotate-6 -ml-24">Wishing you a</h2>
+                    <h1 class="text-[120px] font-black leading-none text-christmas tracking-tight drop-shadow-2xl">
+                        Merry<br>Christmas!
+                    </h1>
+                </div>
+
+            </div>
+
+            <div class="absolute bottom-10 opacity-80">
+                <span class="text-[#fff] font-bold uppercase tracking-widest text-xl">Team Digtize</span>
+            </div>
+
+        </div>
+    </div>
+
+    <button id="record-btn" onclick="startRecording()">
+        🎥 Record & Download
+    </button>
+
+    <script>
+        lucide.createIcons();
+
+        // 1. AUTO FIT SCRIPT
+        function fitToScreen() {
+            const scaler = document.getElementById('scaler');
+            const designSize = 1080;
+            const padding = 60;
+
+            const availableHeight = window.innerHeight - padding;
+            const availableWidth = window.innerWidth - padding;
+
+            let scale = availableHeight / designSize;
+            if (availableWidth < designSize * scale) {
+                scale = availableWidth / designSize;
+            }
+            scaler.style.transform = `scale(${scale})`;
+        }
+        window.addEventListener('load', fitToScreen);
+        window.addEventListener('resize', fitToScreen);
+
+        // 2. RECORDING SCRIPT
+        async function startRecording() {
+            const btn = document.getElementById('record-btn');
+            
+            try {
+                // Select "This Tab" in the popup
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: { displaySurface: "browser" },
+                    audio: false,
+                    selfBrowserSurface: "include"
+                });
+
+                btn.style.opacity = '0'; // Hide button
+
+                const recorder = new MediaRecorder(stream);
+                const chunks = [];
+
+                recorder.ondataavailable = e => chunks.push(e.data);
+                
+                recorder.onstop = () => {
+                    const blob = new Blob(chunks, { type: 'video/webm' });
+                    const url = URL.createObjectURL(blob);
+                    
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'Digtize-Black-Christmas.webm';
+                    a.click();
+
+                    btn.style.opacity = '1';
+                    btn.innerText = "✅ Downloaded!";
+                    btn.classList.remove('recording');
+                    stream.getTracks().forEach(track => track.stop());
+                };
+
+                recorder.start();
+                btn.innerText = "Recording... (Wait 10s)";
+                btn.classList.add('recording');
+
+                setTimeout(() => {
+                    recorder.stop();
+                }, 10000); 
+
+            } catch (err) {
+                console.error(err);
+                btn.innerText = "❌ Error (Try Again)";
+                btn.style.opacity = '1';
+            }
+        }
+    </script>
+</body>
+</html>

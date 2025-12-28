@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize Health - Happy New Year 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* 1. Background Pattern */
+        .bg-dots {
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+        }
+
+        /* 2. Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.15);
+        }
+
+        /* 3. Text Gradients */
+        .text-year-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #ca8a04 0%, #eab308 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* 4. Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .anim-float { animation: float 5s ease-in-out infinite; }
+
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        .anim-pulse-soft { animation: pulse-soft 3s infinite; }
+
+        /* Confetti Graphics */
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #3b82f6;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-white w-[1080px] h-[1080px] flex flex-col items-center justify-between overflow-hidden shadow-2xl">
+        
+        <div class="absolute inset-0 bg-dots opacity-50"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[700px] h-[700px] bg-blue-100/60 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[700px] h-[700px] bg-cyan-100/60 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="absolute top-20 left-20 text-blue-200 anim-float" style="animation-delay: 1s;"><i data-lucide="sparkles" class="w-12 h-12"></i></div>
+        <div class="absolute bottom-40 right-20 text-cyan-200 anim-float" style="animation-delay: 2s;"><i data-lucide="sparkles" class="w-16 h-16"></i></div>
+
+        <div class="relative z-10 pt-16 flex flex-col items-center">
+            <div class="bg-white border border-slate-100 shadow-sm px-6 py-2 rounded-full flex items-center gap-2 mb-6">
+                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span class="text-slate-500 font-bold uppercase tracking-widest text-xs">System Online</span>
+            </div>
+            <h2 class="text-slate-400 font-bold tracking-[0.3em] uppercase text-xl">Digtize Healthcare</h2>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center text-center -mt-10">
+            
+            <div class="relative">
+                <h1 class="text-[280px] font-black leading-none tracking-tighter text-year-gradient anim-float drop-shadow-2xl">
+                    2026
+                </h1>
+                
+                <div class="absolute top-[40px] right-[40px] anim-pulse-soft">
+                    <div class="bg-white p-4 rounded-3xl shadow-xl border border-slate-100 rotate-12">
+                        <i data-lucide="plus" class="w-16 h-16 text-green-500 stroke-[4px]"></i>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-4xl text-slate-700 font-bold mt-4">
+                New Year. <span class="text-blue-600">Smart Clinic.</span>
+            </p>
+
+            <p class="text-slate-500 text-xl mt-4 max-w-2xl leading-relaxed">
+                This year, let AI handle the appointments while you handle the care.
+                <br>Welcome to the future of patient management.
+            </p>
+
+        </div>
+
+        <div class="relative z-10 w-full px-20 pb-20">
+            <div class="glass-card rounded-[40px] p-10 flex items-center justify-between border-t border-white/80">
+                
+                <div class="flex flex-col gap-1">
+                    <p class="text-slate-400 font-bold uppercase tracking-widest text-sm">Your 2026 Resolution</p>
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-8 h-8 text-green-500 fill-green-100"></i>
+                        <span class="text-3xl font-bold text-slate-800">Automate My Clinic</span>
+                    </div>
+                </div>
+
+                <div class="h-12 w-px bg-slate-200 mx-4"></div>
+
+                <div class="flex items-center gap-6">
+                    <div class="text-right">
+                        <p class="text-slate-900 font-bold text-lg">Start Now</p>
+                        <p class="text-blue-600 font-medium text-sm">health.digtize.in</p>
+                    </div>
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-full flex items-center justify-center shadow-lg text-white">
+                        <i data-lucide="arrow-right" class="w-7 h-7"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

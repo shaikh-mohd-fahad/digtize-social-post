@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize - White Christmas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* 1. Brand Background (Snowy Look) */
+        .bg-dots {
+            background-image: radial-gradient(#cbd5e1 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+        }
+
+        /* 2. Glass Snow Globe */
+        .glass-globe {
+            background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.2) 100%);
+            backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 1);
+            box-shadow: 
+                0 20px 50px -10px rgba(59, 130, 246, 0.15),
+                inset 0 0 40px rgba(255, 255, 255, 0.8);
+        }
+
+        /* 3. Falling Snow Animation (Dark flakes for Light BG) */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            background: #cbd5e1; /* Light Grey Snow */
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(1100px); opacity: 0; }
+        }
+
+        /* 4. Text Gradients */
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* 5. Festive Red Accent */
+        .text-festive {
+            color: #ef4444;
+            text-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+        }
+
+        /* Float Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .anim-float { animation: float 4s ease-in-out infinite; }
+
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-slate-50 w-[1080px] h-[1080px] flex flex-col items-center justify-between overflow-hidden shadow-2xl">
+        
+        <div class="absolute inset-0 bg-dots opacity-60"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-blue-50/80 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[800px] h-[800px] bg-cyan-50/80 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="absolute inset-0 pointer-events-none z-0">
+            <script>
+                for(let i=0; i<40; i++) {
+                    let snowflake = document.createElement('div');
+                    snowflake.className = 'snowflake';
+                    snowflake.style.left = Math.random() * 100 + '%';
+                    snowflake.style.width = Math.random() * 5 + 3 + 'px';
+                    snowflake.style.height = snowflake.style.width;
+                    snowflake.style.animationDuration = Math.random() * 4 + 4 + 's';
+                    snowflake.style.animationDelay = Math.random() * 5 + 's';
+                    document.getElementById('capture-area').appendChild(snowflake);
+                }
+            </script>
+        </div>
+
+        <div class="relative z-10 pt-16 flex items-center gap-3">
+            <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-md border border-slate-100">
+                <span class="text-2xl font-bold text-blue-600">D</span>
+            </div>
+            <span class="text-2xl font-bold text-slate-800 tracking-tight">Digtize</span>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center justify-center -mt-8">
+            
+            <div class="anim-float relative">
+                <div class="glass-globe w-[500px] h-[500px] rounded-full flex items-center justify-center relative overflow-hidden">
+                    
+                    <div class="relative z-20 flex flex-col items-center">
+                        <div class="absolute -top-8 -right-4 transform rotate-12 z-30">
+                            <i data-lucide="party-popper" class="w-16 h-16 text-red-500 fill-red-100"></i>
+                        </div>
+                        
+                        <div class="w-40 h-40 bg-gradient-to-br from-blue-500 to-cyan-400 rounded-3xl flex items-center justify-center shadow-2xl text-white">
+                            <i data-lucide="bot" class="w-24 h-24"></i>
+                        </div>
+
+                        <div class="mt-6 bg-white px-6 py-3 rounded-xl shadow-lg border border-slate-100 flex items-center gap-3">
+                            <i data-lucide="gift" class="w-6 h-6 text-red-500"></i>
+                            <span class="text-slate-800 font-bold">Autopilot Mode: ON</span>
+                        </div>
+                    </div>
+
+                    <div class="absolute bottom-0 w-full h-32 bg-gradient-to-t from-white to-transparent opacity-80 z-10"></div>
+                </div>
+
+                <div class="absolute -bottom-12 left-1/2 -translate-x-1/2 w-64 h-8 bg-blue-900/10 blur-xl rounded-full"></div>
+            </div>
+
+            <div class="text-center mt-16 space-y-2">
+                <h1 class="text-7xl font-black text-slate-900 tracking-tight">
+                    You Celebrate.
+                </h1>
+                <h1 class="text-7xl font-black text-gradient-blue tracking-tight">
+                    We Operate.
+                </h1>
+            </div>
+
+        </div>
+
+        <div class="relative z-10 w-full px-16 pb-16 text-center">
+            <p class="text-2xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed mb-8">
+                Give yourself the gift of time. Let AI handle the patients.
+            </p>
+
+            <div class="inline-flex items-center gap-3 bg-white px-8 py-3 rounded-full shadow-lg shadow-blue-100 border border-slate-100">
+                 <i data-lucide="snowflake" class="w-6 h-6 text-cyan-500"></i>
+                 <span class="text-slate-800 font-bold tracking-wide">Merry Christmas, Doctors!</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

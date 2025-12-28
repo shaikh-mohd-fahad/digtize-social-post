@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digtize - Algorithmic Tree</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        
+        /* 1. Clean Background */
+        .bg-clean {
+            background-color: #f8fafc;
+            background-image: 
+                linear-gradient(rgba(203, 213, 225, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(203, 213, 225, 0.3) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        /* 2. Glass Cards (The Ornaments) */
+        .glass-node {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 1);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        /* 3. Connecting Wires (SVG Lines) */
+        .wire {
+            stroke-dasharray: 10;
+            animation: dash 1s linear infinite;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: -20; }
+        }
+
+        /* 4. The Top Star Glow */
+        @keyframes star-pulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(234, 179, 8, 0.4)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 40px rgba(234, 179, 8, 0.8)); }
+        }
+        .star-glow { animation: star-pulse 2s infinite; }
+
+        /* 5. Floating Animation for Rows */
+        @keyframes float-row {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .float-delay-1 { animation: float-row 4s ease-in-out infinite; }
+        .float-delay-2 { animation: float-row 4s ease-in-out infinite 1s; }
+        .float-delay-3 { animation: float-row 4s ease-in-out infinite 2s; }
+
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div id="capture-area" class="relative bg-clean w-[1080px] h-[1080px] flex flex-col items-center justify-between overflow-hidden shadow-2xl">
+        
+        <div class="absolute inset-0 pointer-events-none">
+            <script>
+                for(let i=0; i<30; i++) {
+                    let d = document.createElement('div');
+                    d.style.position = 'absolute';
+                    d.style.top = '-10px';
+                    d.style.left = Math.random() * 100 + '%';
+                    d.style.width = Math.random() * 6 + 'px';
+                    d.style.height = d.style.width;
+                    d.style.background = '#cbd5e1';
+                    d.style.borderRadius = '50%';
+                    d.style.opacity = '0.5';
+                    d.style.animation = `fall ${Math.random()*5+5}s linear infinite`;
+                    document.getElementById('capture-area').appendChild(d);
+                }
+                const style = document.createElement('style');
+                style.innerHTML = `@keyframes fall { to { transform: translateY(1100px); opacity: 0; } }`;
+                document.head.appendChild(style);
+            </script>
+        </div>
+
+        <div class="relative z-10 pt-16 flex flex-col items-center">
+            <div class="inline-flex items-center gap-2 bg-white border border-slate-200 px-4 py-1 rounded-full shadow-sm mb-4">
+                <i data-lucide="sparkles" class="w-4 h-4 text-yellow-500"></i>
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Holiday Edition</span>
+            </div>
+            <h1 class="text-6xl font-black text-slate-900 tracking-tight text-center leading-tight">
+                The Anatomy of <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">Celebration.</span>
+            </h1>
+        </div>
+
+        <div class="relative w-full flex-1 flex flex-col items-center justify-center -mt-8">
+            
+            <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" style="stroke: #e2e8f0; stroke-width: 3;">
+                <line x1="380" y1="650" x2="460" y2="500" />
+                <line x1="700" y1="650" x2="620" y2="500" />
+                <line x1="540" y1="650" x2="540" y2="500" />
+                
+                <line x1="460" y1="440" x2="540" y2="300" class="wire" style="stroke: #22c55e; stroke-width: 4; opacity: 0.5;" />
+                <line x1="620" y1="440" x2="540" y2="300" class="wire" style="stroke: #22c55e; stroke-width: 4; opacity: 0.5;" />
+            </svg>
+
+            <div class="relative z-10 mb-16 float-delay-3">
+                <div class="w-32 h-32 bg-gradient-to-br from-yellow-300 to-yellow-500 rounded-3xl rotate-45 flex items-center justify-center shadow-2xl star-glow border-4 border-white">
+                    <div class="-rotate-45">
+                        <i data-lucide="star" class="w-16 h-16 text-white fill-white"></i>
+                    </div>
+                </div>
+                <div class="absolute -right-32 top-10 bg-white px-4 py-2 rounded-xl shadow-lg border border-yellow-100 flex items-center gap-2">
+                    <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                    <span class="font-bold text-slate-800">Booking Confirmed</span>
+                </div>
+            </div>
+
+            <div class="relative z-10 flex gap-24 mb-16 float-delay-2">
+                <div class="glass-node w-24 h-24 rounded-2xl flex flex-col items-center justify-center gap-1 shadow-green-100 border-green-50">
+                    <div class="bg-green-100 p-2 rounded-full">
+                        <i data-lucide="bot" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">AI Check</span>
+                </div>
+
+                <div class="glass-node w-24 h-24 rounded-2xl flex flex-col items-center justify-center gap-1 shadow-green-100 border-green-50">
+                    <div class="bg-green-100 p-2 rounded-full">
+                        <i data-lucide="calendar-check" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <span class="text-[10px] font-bold text-slate-400 uppercase">Slot Found</span>
+                </div>
+            </div>
+
+            <div class="relative z-10 flex gap-12 float-delay-1">
+                <div class="glass-node w-20 h-20 rounded-full flex items-center justify-center border-red-50 shadow-red-50">
+                    <i data-lucide="phone-call" class="w-8 h-8 text-red-500"></i>
+                </div>
+                <div class="glass-node w-20 h-20 rounded-full flex items-center justify-center border-green-50 shadow-green-50">
+                    <i data-lucide="message-circle" class="w-8 h-8 text-green-500"></i>
+                </div>
+                <div class="glass-node w-20 h-20 rounded-full flex items-center justify-center border-blue-50 shadow-blue-50">
+                    <i data-lucide="mail" class="w-8 h-8 text-blue-500"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="relative z-10 w-full px-16 pb-16 text-center">
+            <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 inline-block">
+                <p class="text-xl text-slate-600 font-medium">
+                    <span class="text-red-500 font-bold">Merry Christmas!</span> May your clinic be full, and your schedule organized.
+                </p>
+            </div>
+            
+            <div class="mt-8 opacity-40">
+                <p class="text-sm font-bold uppercase tracking-[0.3em]">Powered by Digtize AI</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
